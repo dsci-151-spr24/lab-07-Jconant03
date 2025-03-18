@@ -108,6 +108,22 @@ Whickham %>%
   count(smoker, outcome)
 ```
 
+```{r}
+ggplot(Whickham, aes(x = smoker, fill = outcome)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Smoking vs Health Outcome", x = "Smoking Status", y = "Count")
+
+
+Whickham %>%
+  group_by(smoker, outcome) %>%
+  summarise(count = n()) %>%
+  mutate(probability = count / sum(count)) %>%
+  print()
+
+
+```
+***
+}}
 6.  Create a new variable called `age_cat` using the following scheme:
 
 -   `age <= 44 ~ "18-44"`
