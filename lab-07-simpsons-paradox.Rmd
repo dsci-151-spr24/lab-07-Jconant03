@@ -1,6 +1,7 @@
 ---
 title: "Lab 07 - Smokers in Whickham"
 subtitle: "Simpson's paradox"
+author: Jack Conant
 output: 
   tufte::tufte_html:
     tufte_variant: "envisioned"
@@ -58,15 +59,45 @@ You can find out more about the dataset by inspecting their documentation, which
 
 1.  What type of study do you think these data come from: observational or experiment?
     Why?
+    ***I believe that the study that this data comes from is observational as it seems that the data is not manipulated or tested in any way and is purely just collected over a period of time from natural conditions.***
 
 2.  How many observations are in this dataset?
     What does each observation represent?
+    
+  ***There are 1314 observations throughout the dataset. There are three categories that are taken into account: Outcome- survival status after 20 years: a factor with levels Alive Dead, Smoker - smoking status at baseline: a factor with levels No Yes, and age- age (in years) at the time of the first survey.***
 
 3.  How many variables are in this dataset?
     What type of variable is each?
     Display each variable using an appropriate visualization.
+***There are the three variables mentioned before, Outcome- Categorical, Smoker- Categorical, Age - Numerical.***
 
+```{r}
+# Histogram of Age
+p1 <- ggplot(Whickham, aes(x = age)) + geom_histogram(binwidth = 5, fill = "blue")
+print(p1)  # Ensure plot shows after knitting
+
+# Bar Plot of Smoking Status
+p2 <- ggplot(Whickham, aes(x = smoker)) + geom_bar(fill = "red")
+print(p2)
+
+# Bar Plot of Survival Outcome
+p3 <- ggplot(Whickham, aes(x = outcome)) + geom_bar(fill = "green")
+print(p3)
+
+# Box Plot: Age by Smoking Status
+p4 <- ggplot(Whickham, aes(x = smoker, y = age)) + geom_boxplot(fill = "orange")
+print(p4)
+
+
+
+
+
+
+
+```
 4.  What would you expect the relationship between smoking status and health outcome to be?
+
+***I would expect that those that smoke would not have a good health status after years of prolonged usage of cigarettes.***
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
 
